@@ -21,7 +21,7 @@ header {
 	width: 100%;
 	/* 简单的灰色渐变背景，可根据需要自行修改颜色 */
 	background: linear-gradient(to bottom, #777 0%, #fff 99%);
-  	line-height: 80px;
+  	line-height: 120px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

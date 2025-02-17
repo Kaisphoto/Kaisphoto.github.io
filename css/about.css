@@ -1,0 +1,75 @@
+/* 全局基础样式 */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Serif 4', serif;
+  color: #333;
+  background-color: #fff;
+}
+
+/* 标题样式：增加上方留白 */
+h1 {
+  text-align: center;
+  margin: 100px 0 20px 0;  /* 上边距80px */
+  font-size: 2em;
+}
+
+/* 主体区域：使用 Flex 布局，并添加居中容器 */
+.about-container {
+  position: relative;  /* 为伪元素定位提供参考 */
+  display: flex;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 40px 20px;  /* 顶部留白40px */
+}
+
+
+/* 左右两列各占 50% 宽度 */
+.about-image,
+.about-text {
+  width: 50%;
+}
+
+/* 左侧图片区域 */
+.about-image {
+  padding-right: 20px;  /* 给右侧留出空白，不与分隔线重叠 */
+  /* 默认上对齐 */
+
+}
+
+.about-image img {
+	max-width: 60%;
+	height: auto;
+	border-radius: 40px;
+	float: right;
+}
+
+/* 右侧文字区域 */
+.about-text {
+  padding-left: 20px;  /* 给左侧留出空白，不与分隔线重叠 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.about-text p {
+	width: 60%;
+	font-size: 1em;
+	margin-bottom: 16px;
+	line-height: 1.6;
+}
+
+.about-text a {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px dotted #333;
+}
+
+.about-text a:hover {
+  color: #000;
+  border-bottom-color: #000;
+}
+
+.about-text p.small {
+  font-size:8px; /* 根据需要修改数值 */
+}

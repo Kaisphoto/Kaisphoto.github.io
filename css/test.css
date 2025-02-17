@@ -1,0 +1,25 @@
+/* 基础设置：让 html, body 占满可视窗口，并去除默认边距 */
+html, body {
+  height: 100%;    /* 保证 body 能使用 100% 的可视高度 */
+  margin: 0;
+  padding: 0;
+}
+
+/* 使用 Flex 布局，让 body 垂直排列 */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* main 区域设为可伸缩区域，撑开剩余空间 */
+main {
+  flex: 1;
+}
+
+/* footer 样式示例 */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
