@@ -1,5 +1,22 @@
 /* 页面基础样式清理 */
 
+html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;  /* 关键：确保父容器有 100% 高度 */
+    }
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* main 区域设为可伸缩区域，撑开剩余空间 */
+main {
+  flex: 1;
+}
+
+
 header {
 	width: 100%;
 	/* 简单的灰色渐变背景，可根据需要自行修改颜色 */
