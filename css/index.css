@@ -27,8 +27,10 @@
   border-right: 5px solid #fff;
 }
 
-/* 图片样式：自适应宽度并隐藏底部空隙 */
+/* 图片样式：自适应宽度并隐藏底部空隙，同时添加上下白色边框 */
 .image-column img {
   width: 100%;
   display: block;
+  border-top: 5px solid #fff;
+  border-bottom: 5px solid #fff;
 }

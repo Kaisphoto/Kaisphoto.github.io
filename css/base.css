@@ -16,6 +16,10 @@ header {
 	margin: 0 auto;
 }
 
+.logo{
+	font-size: 1.5em;
+}
+
 .logo, .topbar-menu li{
 	float: left;
 	display: flex;
@@ -31,3 +35,59 @@ header {
 	
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+  width: 100%;
+  text-align: center;    /* 文字居中 */
+  padding: 20px 0;       /* 上下内边距 */
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+footer p {
+  margin-bottom: 10px;   /* 与图标之间的间距 */
+}
+
+/* 图标区域的样式 */
+.footer-icons a {
+  color: #333;           /* 图标初始颜色 */
+  text-decoration: none; /* 去掉下划线 */
+  margin: 0 10px;        /* 图标之间的水平间距 */
+  font-size: 24px;       /* 图标大小 */
+  transition: color 0.3s;
+}
+
+/* 悬停时改变图标颜色 */
+.footer-icons a:hover {
+  color: #000;
+}
