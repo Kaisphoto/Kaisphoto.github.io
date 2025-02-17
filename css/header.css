@@ -1,0 +1,23 @@
+header {
+	width: 100%;
+	/* 简单的灰色渐变背景，可根据需要自行修改颜色 */
+	background: linear-gradient(to bottom, #BFBFBF 0%, #EAEAEA 100%);
+	height: 80px;
+  	line-height: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 40px;
+}
+
+.topbar-wrapper{
+	
+}
+
+.logo, .logo li, .topbar-menu li{
+	float: left;
+}
+
+.topbar-menu {
+	float: right;
+}

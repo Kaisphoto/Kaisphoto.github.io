@@ -1,0 +1,33 @@
+/* 页面基础样式清理 */
+
+header {
+	width: 100%;
+	/* 简单的灰色渐变背景，可根据需要自行修改颜色 */
+	background: linear-gradient(to bottom, #777 0%, #fff 99%);
+  	line-height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 40px;
+}
+
+.topbar-wrapper{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.logo, .topbar-menu li{
+	float: left;
+	display: flex;
+	align-items: center;
+}
+
+.topbar-menu {
+	float: right;
+}
+
+.topbar-menu li a{
+	margin-left: 20px;
+	
+}
+

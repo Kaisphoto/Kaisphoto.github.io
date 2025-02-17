@@ -1,0 +1,34 @@
+/* 主页样式表 */
+/* 网页主体部分容器，占据100%宽度 */
+.main-content {
+  width: 100%;
+  margin: 0 auto;
+  /* 你可以根据需要设置背景色等其他样式 */
+}
+
+/* 三列布局容器 */
+.image-columns {
+  display: flex;
+}
+
+/* 每一列 */
+.image-column {
+  flex: 1;
+  padding: 10px; /* 内边距，可根据需要调整 */
+}
+
+/* 左侧列添加左侧白色边框 */
+.image-column:first-child {
+  border-left: 5px solid #fff;
+}
+
+/* 右侧列添加右侧白色边框 */
+.image-column:last-child {
+  border-right: 5px solid #fff;
+}
+
+/* 图片样式：自适应宽度并隐藏底部空隙 */
+.image-column img {
+  width: 100%;
+  display: block;
+}
