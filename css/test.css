@@ -1,25 +1,55 @@
-/* 基础设置：让 html, body 占满可视窗口，并去除默认边距 */
-html, body {
-  height: 100%;    /* 保证 body 能使用 100% 的可视高度 */
-  margin: 0;
-  padding: 0;
+/* 容器设置为两列布局 */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 一行两列 */
+  gap: 20px; /* 列间距或行间距 */
+  max-width: 1200px; /* 可根据需求修改 */
+  margin: 0 auto; /* 居中 */
+  padding: 20px;
 }
 
-/* 使用 Flex 布局，让 body 垂直排列 */
-body {
+/* 让超链接本身成为块级元素，并继承.box的效果 */
+.box {
+  position: relative; /* 用于定位遮罩 */
+  width: 100%;
+  height: 300px; /* 根据需要调整 */
+  overflow: hidden;
+  text-decoration: none; /* 去除默认超链接下划线 */
+  color: inherit;        /* 让文字颜色跟随当前样式 */
+  display: block;        /* 让a元素在网格中占据整个“格子” */
+}
+
+/* 图片铺满父级 */
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持图片比例同时填充容器 */
+  display: block;
+}
+
+/* 覆盖层（带半透明白色和文字） */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4); /* 半透明白色 */
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.3s ease; /* 鼠标悬停时淡出 */
 }
 
-/* main 区域设为可伸缩区域，撑开剩余空间 */
-main {
-  flex: 1;
+/* 覆盖层文字样式 */
+.overlay h2 {
+  color: #000;
+  font-size: 24px;
+  margin: 0;
 }
 
-/* footer 样式示例 */
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
+/* 鼠标悬停时，让遮罩和文字消失 */
+.box:hover .overlay {
+  opacity: 0;
 }
