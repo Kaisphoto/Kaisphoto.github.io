@@ -1,51 +1,21 @@
-/* 重置样式 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Source Serif 4', serif;
-  line-height: 1.6;
-  color: #333;
-}
-
-/* 导航条样式 */
-.topbar-wrapper {
-  background-color: #333;
-}
-.topbar {
-  max-width: 1200px;
-  margin: 0 auto;
+/* 容器设置为两列布局 */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 一行两列 */
+  gap: 20px; /* 列间距或行间距 */
+  max-width: 1200px; /* 可根据需求修改 */
+  margin: 0 auto; /* 居中 */
   padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
-.logo a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5rem;
-}
-.topbar-menu {
-  list-style: none;
-  display: flex;
-}
-.topbar-menu li {
-  margin-left: 20px;
-}
-.topbar-menu li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-}
+
+
 
 /* Hero 区域 */
 .hero {
   width: 100%;
-  height: 800px;
+  /* height: 800px; */
   background-image:  url('../img/Sports/a1.jpg');
+  background-color: #000;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -65,65 +35,63 @@ body {
   margin: 0;
 }
 
-/* 主体内容网格 */
-.container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 让超链接本身成为块级元素，并继承.box的效果 */
 .box {
-  position: relative;
+  position: relative; /* 用于定位遮罩 */
   width: 100%;
-  height: 300px;
+  height: 300px; /* 根据需要调整 */
   overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  display: block;
+  text-decoration: none; /* 去除默认超链接下划线 */
+  color: inherit;        /* 让文字颜色跟随当前样式 */
+  display: block;        /* 让a元素在网格中占据整个“格子” */
 }
+
+/* 图片铺满父级 */
 .box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* 保持图片比例同时填充容器 */
   display: block;
 }
+
+/* 覆盖层（带半透明白色和文字） */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05); /* 半透明白色 */
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease; /* 鼠标悬停时淡出 */
 }
+
+/* 覆盖层文字样式 */
 .overlay h2 {
   color: #fff;
   font-size: 24px;
   margin: 0;
 }
+
+/* 鼠标悬停时，让遮罩和文字消失 */
 .box:hover .overlay {
   opacity: 0;
-}
-
-/* 页脚样式 */
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-}
-.footer-icons {
-  margin-top: 10px;
-}
-.footer-icons a {
-  margin: 0 10px;
-  color: #fff;
-  font-size: 1.2rem;
-  text-decoration: none;
 }
