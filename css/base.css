@@ -60,6 +60,52 @@ header {
 
 
 
+/* 默认：PC端三列布局 */
+.image-columns {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-column {
+  flex: 1;        /* 每一列平分父容器 */
+  padding: 10px;
+}
+
+/* 如果需要，可以添加边框样式 */
+.image-column:first-child {
+  border-left: 5px solid #fff;
+}
+
+.image-column:last-child {
+  border-right: 5px solid #fff;
+}
+
+.image-column img {
+  width: 100%;
+  display: block;
+  border-top: 5px solid #fff;
+  border-bottom: 5px solid #fff;
+}
+
+/* 手机端：一列布局 */
+@media screen and (max-width: 768px) {
+  .image-columns {
+    flex-direction: column;
+  }
+  .image-column {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 
