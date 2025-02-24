@@ -60,6 +60,11 @@ header {
 
 
 
+
+
+
+
+
 /* 默认：PC端三列布局 */
 .image-columns {
   display: flex;
@@ -96,7 +101,14 @@ header {
     width: 100%;
     padding: 10px 0;
   }
+  .image-column img {
+    width: 100%;
+    height: auto;
+    max-width: 100%; /* 确保图片不会超出容器 */
+  }
 }
+
+
 
 
 
