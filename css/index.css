@@ -1,3 +1,66 @@
+/* 页面基础样式清理 */
+
+/* 全局设置 box-sizing，确保所有元素计算宽度时包含内边距 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;  /* 关键：确保父容器有 100% 高度 */
+    }
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* main 区域设为可伸缩区域，撑开剩余空间 */
+main {
+  flex: 1;
+}
+
+
+header {
+	width: 100%;
+	/* 简单的灰色渐变背景，可根据需要自行修改颜色 */
+	background: linear-gradient(to bottom, #777 0%, #fff 99%);
+  	line-height: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 40px;
+}
+
+.topbar-wrapper{
+	width: 75%;
+	margin: 0 auto;
+}
+
+.logo{
+	font-size: 2em;
+}
+
+.logo, .topbar-menu li{
+	float: left;
+	display: flex;
+	align-items: center;
+}
+
+.topbar-menu {
+	float: right;
+}
+
+.topbar-menu li a{
+	font-size: 1.2em;
+	margin-left: 20px;
+	
+}
+
+
+
+
 /* 默认：PC端三列布局 */
 .image-columns {
   display: flex;
@@ -6,17 +69,10 @@
 
 .image-column {
   flex: 1;        /* 每一列平分父容器 */
-  padding: 10px;
+  padding-left: 5px;
 }
 
-/* 如果需要，可以添加边框样式 */
-.image-column:first-child {
-  border-left: 5px solid #fff;
-}
 
-.image-column:last-child {
-  border-right: 5px solid #fff;
-}
 
 .image-column img {
   width: 100%;
@@ -25,13 +81,125 @@
   border-bottom: 5px solid #fff;
 }
 
-/* 手机端：一列布局 */
-@media screen and (max-width: 768px) {
-  .image-columns {
-    flex-direction: column;
-  }
-  .image-column {
-    width: 100%;
-    padding: 10px 0;
-  }
+
+
+
+
+footer {
+  width: 100%;
+  text-align: center;    /* 文字居中 */
+  padding: 20px 0;       /* 上下内边距 */
+  background-color: #fff;
+  box-sizing: border-box;
 }
+
+footer p {
+  margin-bottom: 10px;   /* 与图标之间的间距 */
+}
+
+/* 图标区域的样式 */
+.footer-icons a {
+  color: #333;           /* 图标初始颜色 */
+  text-decoration: none; /* 去掉下划线 */
+  margin: 0 10px;        /* 图标之间的水平间距 */
+  font-size: 24px;       /* 图标大小 */
+  transition: color 0.3s;
+}
+
+/* 悬停时改变图标颜色 */
+.footer-icons a:hover {
+  color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 手机端：屏幕宽度小于768px时采用多列布局 */
+@media (max-width: 768px) {
+	
+	/* 导航条修改 */
+	header {
+	    padding: 0 10px;
+		line-height: 40px;
+	  }
+	  
+	  .topbar-wrapper {
+	    width: 100%;
+	    margin: 0;
+	    padding: 0 10px;
+	  }
+	  
+	  /* 导航链接字体大小设置为1em，同时调整间距 */
+	  .topbar-menu li a {
+	    font-size: 0.5em;
+	    margin-left: 10px;
+	  }
+	  
+	  /* 可选：调整logo字体大小 */
+	  .logo {
+	    font-size: 1em;
+	  }
+
+
+
+
+	/* 图片阵列的设置 */
+	.image-columns {
+	/* 使用多列布局 */
+		display: block;
+		column-count: 2;
+		column-gap: 3px;  /* 左右间距 */
+		margin: 0;
+		padding: 0;
+	}
+  
+  /* 移除原有 .image-column 的影响 */
+	.image-column {
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+  
+  .image-columns img {
+    width: 100%;
+    /* 设置图片之间上下间距为3px */
+    margin: 0 0 3px 0;
+	padding: 0;
+	border: 0;
+    display: block;
+  }
+  
+  
+  
+  
+  
+  /* 结尾 */
+  footer{      
+    font-size: 10px;       /* 图标大小 */
+  }
+  
+  
+  .footer-icons a {
+    font-size: 10px;       /* 图标大小 */
+  }
+  
+  
+  
+  
+  
+  
+}
+
