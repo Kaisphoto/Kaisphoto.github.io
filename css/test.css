@@ -1,5 +1,10 @@
 /* 页面基础样式清理 */
 
+/* 全局设置 box-sizing，确保所有元素计算宽度时包含内边距 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {
       margin: 0;
       padding: 0;
@@ -84,26 +89,52 @@ header {
 
 /* 手机端：屏幕宽度小于768px时采用多列布局 */
 @media (max-width: 768px) {
-  .image-columns {
-    /* 使用多列布局 */
-    display: block;
-    column-count: 2;
-    column-gap: 3px;  /* 左右间距 */
-    margin: 0;
-    padding: 0;
-  }
+	
+	/* 导航条修改 */
+	header {
+	    padding: 0 10px;
+	  }
+	  
+	  .topbar-wrapper {
+	    width: 100%;
+	    margin: 0;
+	    padding: 0 10px;
+	  }
+	  
+	  /* 导航链接字体大小设置为1em，同时调整间距 */
+	  .topbar-menu li a {
+	    font-size: 1em;
+	    margin-left: 10px;
+	  }
+	  
+	  /* 可选：调整logo字体大小 */
+	  .logo {
+	    font-size: 1.5em;
+	  }
+
+	/* 图片阵列的设置 */
+	.image-columns {
+	/* 使用多列布局 */
+		display: block;
+		column-count: 2;
+		column-gap: 3px;  /* 左右间距 */
+		margin: 0;
+		padding: 0;
+	}
   
   /* 移除原有 .image-column 的影响 */
-  .image-column {
-    padding: 0;
-    margin: 0;
-  }
+	.image-column {
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
   
   .image-columns img {
     width: 100%;
     /* 设置图片之间上下间距为3px */
     margin: 0 0 3px 0;
 	padding: 0;
+	border: 0;
     display: block;
   }
 }
