@@ -76,14 +76,7 @@ header {
   padding: 10px;
 }
 
-/* 如果需要，可以添加边框样式 */
-.image-column:first-child {
-  border-left: 5px solid #fff;
-}
 
-.image-column:last-child {
-  border-right: 5px solid #fff;
-}
 
 .image-column img {
   width: 100%;

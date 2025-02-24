@@ -62,50 +62,53 @@ header {
 
 
 
-/* 桌面端：默认三列布局 */
+/* 默认：PC端三列布局 */
 .image-columns {
   display: flex;
+  flex-direction: row;
 }
 
 .image-column {
-  flex: 1;
-  padding: 5px;
+  flex: 1;        /* 每一列平分父容器 */
+  padding-left: 5px;
 }
+
+
 
 .image-column img {
-  display: block;
   width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+  display: block;
+  border-top: 5px solid #fff;
+  border-bottom: 5px solid #fff;
 }
 
-/* 手机端：屏幕宽度小于768px时显示两列
-   - 两列之间水平间距为5px
-   - 行与行之间垂直间距为3px
-   - 清除多余的 margin/padding，以尽量减小空隙 */
+/* 手机端：屏幕宽度小于768px时采用多列布局 */
 @media (max-width: 768px) {
   .image-columns {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 5px;  /* 水平间距 */
-    grid-row-gap: 3px;     /* 垂直间距 */
-    margin: 0;             /* 去除容器自身的外边距 */
-    padding: 0;            /* 去除容器自身的内边距 */
+    /* 使用多列布局 */
+    display: block;
+    column-count: 2;
+    column-gap: 3px;  /* 左右间距 */
+    margin: 0;
+    padding: 0;
   }
-
+  
+  /* 移除原有 .image-column 的影响 */
   .image-column {
-    display: contents;     /* 让原来的 .image-column 不再影响网格布局 */
-    padding: 0;            /* 覆盖掉桌面端的 padding */
-    margin: 0;             /* 防止还有 margin */
+    padding: 0;
+    margin: 0;
   }
-
+  
   .image-columns img {
-    display: block;        /* 确保图片是块级元素，不受行高等影响 */
     width: 100%;
-    height: auto;
-    margin: 0;             /* 去除默认或继承的 margin */
+    /* 设置图片之间上下间距为3px */
+    margin: 0 0 3px 0;
+	padding: 0;
+    display: block;
   }
 }
+
+
 
 
 
