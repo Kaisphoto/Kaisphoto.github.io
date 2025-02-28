@@ -60,7 +60,6 @@ header {
 
 
 
-
 /* 默认：PC端三列布局 */
 .image-columns {
   display: flex;
@@ -75,10 +74,17 @@ header {
 
 
 .image-column img {
-  width: 100%;
-  display: block;
-  /* border-top: 5px solid #fff; */
-  border-bottom: 5px solid #fff;
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
+	/* 禁用鼠标事件，使右键点击无法直接作用于图片 */
+	pointer-events: none;
+	
+	width: 100%;
+	display: block;
+	/* border-top: 5px solid #fff; */
+	border-bottom: 5px solid #fff;
 }
 
 
