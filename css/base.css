@@ -68,7 +68,6 @@ header {
 
 .image-column {
   flex: 1;        /* 每一列平分父容器 */
-
   padding-left: 5px;
 }
 
@@ -260,7 +259,7 @@ footer p {
   width: 100%;
   display: block;
   margin-bottom: 5px;
-  break-inside: avoid; /* 避免图片跨列被截断 */
+
 }
 
 
