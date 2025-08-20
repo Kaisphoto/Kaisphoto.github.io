@@ -68,8 +68,7 @@ header {
 
 .image-column {
   flex: 1;        /* 每一列平分父容器 */
-  column-count: 3;
-  column-gap: 5px; /* 列间距 */
+
   padding-left: 5px;
 }
 
