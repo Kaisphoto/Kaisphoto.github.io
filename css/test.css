@@ -202,7 +202,28 @@ footer p {
     font-size: 10px;       /* 图标大小 */
   }
   
+  /* PC 默认三列布局 */
+  .image-columns {
+    column-count: 3;
+    column-gap: 5px; /* 列间距 */
+  }
   
+  .image-columns img {
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    break-inside: avoid; /* 避免图片跨列被截断 */
+  }
+  
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .image-columns {
+      column-count: 2;  /* 平板两列 */
+    }
+  }
+  
+  
+
   
   
   
