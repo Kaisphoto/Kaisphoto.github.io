@@ -108,6 +108,22 @@ header {
 
 
 /* Hero 区域 */
+
+
+/* 对于Sports的海报 */
+.sports_hero {
+  width: 100%;
+  height: 800px;
+  background-image:  url('../img/Sports/Athletics/a1.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+
+
+
 .hero-overlay {
   background-color: rgba(255, 255, 255, 0.1); /* 白色不透明 */
   width: 100%;
