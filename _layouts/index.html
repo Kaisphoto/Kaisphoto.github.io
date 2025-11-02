@@ -18,33 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&display=swap" />
 </head>
 <body>
-  <header>
-  	  <!-- 顶部导航条 -->
-  	  <!-- 顶部导航条的外部容器 -->
-  	  <div class="topbar-wrapper">
-  	  	<!-- 创建内容容器 -->
-  	  	<div class="topbar">
-  	  		
-  	  		<!-- 左边logo -->
-  	  		<div class="logo">  <a href="index.html">KAISFOTO</a>  </div>
-  	  		
-  	  			
-  	  		
-  	  		<!-- 右侧界面 -->
-  	  		<ul class="topbar-menu">
-  				<li><a href="/index.html">Home</a></li>
-  				<li><a href="/Sports.html">Sports</a></li>
-  				<li><a href="/Events.html">Events</a></li>
-  				<li><a href="/Stage.html">Stage</a></li>
-  				<li><a href="/Landscape.html">Landscape</a></li>
-  	  		    <li><a href="/About.html">About</a></li>
-  	  		 </ul>
-  	  	
-  	  	</div>
-  	  	
-  	  </div>
-  		
-  </header>
+  {% include header.html %}
 
   <main>
     {{ content }}
