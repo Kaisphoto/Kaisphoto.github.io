@@ -1,0 +1,588 @@
+/* ========== 全局 ========== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111827;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 用 max-width 而不是 min(...)，避免兼容问题 */
+.container {
+  max-width: 1100px;
+  width: 94%;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ========== 顶部导航 ========== */
+.topbar {
+  position: fixed;      /* 不用 inset，老方式 */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(16px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+  z-index: 50;
+}
+
+.nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+
+
+.brand-logo {
+  height: 45px;       
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+}
+
+
+/*
+.btn-small {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.78rem;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========== Hero ========== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 580px;
+  overflow: hidden;
+  background: #000;
+}
+
+/* 直接铺 img */
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 关键：不变形 */
+  z-index: 0;
+}
+
+
+
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* 做深一点，白字能看见 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.9));
+}
+
+.hero-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  color: #fff;
+  max-width: 520px;
+}
+
+.hero-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.hero-title {
+  font-size: 3.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.hero-sub {
+  background: rgba(255, 255, 255, 0.25);
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: #000; /* 这里改黑字，看得更清楚 */
+  backdrop-filter: blur(6px);
+}
+
+/* ========== 跑马灯 ========== */
+.ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  height: 44px;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  align-items: center;
+  height: 100%;
+  animation: marquee 24s linear infinite;
+}
+
+.ticker-track span {
+  color: #fff;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========== 通用段落 ========== */
+.section {
+  padding:  1rem 0 4rem 0rem;
+  background: #fff;
+}
+
+.section-head {
+  margin-bottom: 2rem;
+}
+
+.section-head h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0rem;
+  text-transform: uppercase;
+}
+
+.section-head p {
+  margin: 0 0rem;
+  color: #6b7280;
+}
+
+.section-head.center {
+  text-align: center;
+}
+
+/* ========== Work / masonry ========== */
+/* .work {
+  background: #fff;
+}
+
+.masonry {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+.masonry-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  background: #0f172a;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.03);
+}
+
+.masonry-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: #fff;
+  padding: 1rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+} */
+
+/* ========== Work ========== */
+.work {
+  background: #fff;
+}
+
+/* 两列，等宽，等高 */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem; /* 卡片之间的间距 */
+}
+
+/* 每一张图的壳 */
+.work-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #0f172a;
+  height: 300px;        /* ← 这是关键：统一高度，左右才会对齐 */
+  width:  450px;
+}
+
+/* 图片填满这个壳 */
+.work-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.work-card:hover img {
+  transform: scale(1.03);
+}
+
+/* 底部黑渐变+文字 */
+.work-card figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+  color: #fff;
+  padding: 1rem;
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+}
+
+
+
+/* ========== Trusted ========== */
+.trusted {
+  background: #000;
+  color: #fff;
+}
+
+.trusted-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+}
+
+.trusted-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 1.2rem;
+  min-height: 110px;
+  display: grid;
+  place-items: center;
+  padding: 0.8rem;
+}
+
+.trusted-item img {
+  max-height: 70px;
+  object-fit: contain;
+}
+
+/* ========== About ========== */
+.about {
+  background: #f8fafc;
+  text-align: center;
+}
+
+.about .narrow {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.about p {
+  color: #4b5563;
+}
+
+/* ========== Accreditations ========== */
+.acc {
+  background: #000;
+  color: #fff;
+}
+
+.acc-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.acc-card {
+  background: rgba(15, 118, 178, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1.4rem;
+  padding: 1.5rem 1.5rem 1.2rem;
+  text-align: center;
+}
+
+.acc-card img {
+  width: 140px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+
+.acc-card h3 {
+  margin: 0 0 0 0rem;
+  font-size: 1.05rem;
+}
+
+.acc-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.6rem;
+}
+
+.acc-card h2 {
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ========== Contact ========== */
+.contact {
+  background: linear-gradient(150deg, #000 0%, #0f172a 100%);
+  color: #fff;
+}
+
+.contact-wrap {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.contact-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-text p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.contact-text .small {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.2rem;
+  padding: 1.4rem 1.5rem 1.2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0.6rem;
+  padding: 0.55rem 0.6rem;
+  color: #fff;
+  font-size: 0.78rem;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-form button {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ========== Footer ========== */
+footer {
+  width: 100%;
+  text-align: center;    /* 文字居中 */
+  padding: 20px 0;       /* 上下内边距 */
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+footer p {
+  margin-bottom: 10px;   /* 与图标之间的间距 */
+}
+
+/* 图标区域的样式 */
+.footer-icons a {
+  color: #333;           /* 图标初始颜色 */
+  text-decoration: none; /* 去掉下划线 */
+  margin: 0 10px;        /* 图标之间的水平间距 */
+  font-size: 24px;       /* 图标大小 */
+  transition: color 0.3s;
+}
+
+/* 悬停时改变图标颜色 */
+.footer-icons a:hover {
+  color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========== 响应式 ========== */
+@media (max-width: 900px) {
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+    display: none;
+  }
+  .hero {
+    min-height: 520px;
+  }
+  .section {
+    padding: 3.5rem 0;
+  }
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
