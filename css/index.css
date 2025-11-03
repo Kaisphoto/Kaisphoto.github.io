@@ -289,25 +289,29 @@ a {
 .work {
   background: #fff;
 }
-
-/* 两列，等宽，等高 */
+/* 外层 */
+/* 让 grid 本身居中 + 每列定宽 */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem; /* 卡片之间的间距 */
+  gap: 2rem;                                      /* 卡片间距 */
+  grid-template-columns: repeat(2, minmax(360px, 520px));
+  justify-content: center;                        /* ← 让整块 grid 在容器里居中 */
+  justify-items: center;                          /* 可选：格子内也水平居中 */
 }
 
-/* 每一张图的壳 */
+/* 卡片宽度跟列等宽，不要再写死 width */
 .work-card {
-  position: relative;
+  width: 100%;                                    /* 占满列宽 */
+  aspect-ratio: 16 / 9;                           /* 比例固定 */
   border-radius: 1rem;
   overflow: hidden;
   background: #0f172a;
-  height: 300px;        /* ← 这是关键：统一高度，左右才会对齐 */
-  width:  450px;
+  position: relative;
 }
 
-/* 图片填满这个壳 */
+
+
+/* 图片填满卡片 */
 .work-card img {
   width: 100%;
   height: 100%;
@@ -315,68 +319,98 @@ a {
   transition: transform .3s ease;
 }
 
-.work-card:hover img {
-  transform: scale(1.03);
-}
+.work-card:hover img { transform: scale(1.03); }
 
-/* 底部黑渐变+文字 */
+/* 底部文字：用兼容性最好的写法 */
 .work-card figcaption {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+  bottom: 0;                     /* ← 替代 inset */
+  padding: 1rem 1rem 0.9rem;
   color: #fff;
-  padding: 1rem;
-  font-size: .7rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: .15em;
+  z-index: 2;                    /* 保证在图片上方 */
+  background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+  pointer-events: none;          /* 可选：避免遮挡点击 */
 }
+
+/* 小屏降为一列 */
+@media (max-width: 760px) {
+  .work-grid {
+    grid-template-columns: minmax(280px, 1fr);
+    justify-content: center;
+  }
+}
+
+
 
 
 
 /* ========== Trusted ========== */
+/* ========== My Work / Highlight ========== */
 .trusted {
-  background: #000;
+  background: #000;          /* 黑底更突出作品 */
   color: #fff;
+  padding: 6rem 0;           /* 上下留空间 */
 }
 
+/* 三列网格 */
 .trusted-grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, 1fr);  /* ← 固定三列 */
+  gap: 2rem;                              /* 每个卡片之间的间距 */
+  justify-items: center;                  /* 每列居中对齐 */
   align-items: center;
 }
 
+/* 单个作品卡片 */
 .trusted-item {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 1.2rem;
-  min-height: 110px;
-  display: grid;
-  place-items: center;
-  padding: 0.8rem;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;                   /* 每张图比例一致 */
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #111;                       /* 占位背景 */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* 图片 */
 .trusted-item img {
-  max-height: 70px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-/* ========== About ========== */
-.about {
-  background: #f8fafc;
-  text-align: center;
+/* 悬停效果：略放大 + 光晕 */
+.trusted-item:hover img {
+  transform: scale(1.05);
 }
 
-.about .narrow {
-  max-width: 640px;
-  margin: 0 auto;
+.trusted-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255,255,255,0.08);
 }
 
-.about p {
-  color: #4b5563;
+/* 小屏幕：改为两列 */
+@media (max-width: 1024px) {
+  .trusted-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
+/* 手机屏幕：一列 */
+@media (max-width: 640px) {
+  .trusted-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* ========== Accreditations ========== */
 .acc {
