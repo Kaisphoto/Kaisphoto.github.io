@@ -354,7 +354,7 @@ a {
 .trusted {
   background: #000;          /* 黑底更突出作品 */
   color: #fff;
-  padding: 6rem 0;           /* 上下留空间 */
+  padding: 0.5rem 0;           /* 上下留空间 */
 }
 
 /* 三列网格 */
@@ -476,7 +476,7 @@ a {
 .contact-wrap {
   display: grid;
   gap: 2.5rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.25fr 0.75fr;
   align-items: start;
 }
 
@@ -535,6 +535,36 @@ a {
   padding: 0.6rem 1.2rem;
   font-weight: 500;
   cursor: pointer;
+}
+
+.contact-logo {
+  justify-self: center;   /* 右对齐 */
+  align-self: center;  /* 垂直居中到版心 */
+}
+
+/* Logo 图片样式 */
+.contact-logo img {
+  max-width: 200px;    /* 自行调整尺寸 */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
+  /* opacity: 0.95; */      /* 深色背景更柔和，可按需删掉 */
+}
+
+/* 响应式：小屏改一列，Logo 仍贴右侧显示 */
+@media (max-width: 768px) {
+  .contact-wrap {
+    grid-template-columns: 1fr;   /* 从两列变一列 */
+    gap: 1.6rem;
+  }
+  .contact-logo {
+    justify-self: end;            /* 让 Logo 靠右 */
+    margin-top: 0.25rem;
+  }
+  .contact-logo img {
+    max-width: 110px;             /* 小屏缩小一点 */
+  }
 }
 
 /* ========== Footer ========== */
