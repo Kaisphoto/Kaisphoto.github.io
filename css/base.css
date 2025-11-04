@@ -33,7 +33,7 @@ header {
 	padding: 0 40px;
 }
 
-.topbar-wrapper{
+/* .topbar-wrapper{
 	width: 75%;
 	margin: 0 auto;
 }
@@ -58,7 +58,54 @@ header {
 	
 }
 
+*/
 
+.topbar {
+  position: fixed;      /* 不用 inset，老方式 */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(16px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+  z-index: 50;
+}
+
+.nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+
+
+.brand-logo {
+  height: 45px;       
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+}
 
 /* 默认：PC端三列布局 */
 .image-columns {
@@ -69,7 +116,9 @@ header {
 .image-column {
   flex: 1;        /* 每一列平分父容器 */
   padding-left: 5px;
-}
+} 
+
+
 
 
 
