@@ -431,6 +431,10 @@ a {
 .acc-grid {
   display: grid;
   gap: 1.2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
