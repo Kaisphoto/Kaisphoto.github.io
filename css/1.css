@@ -1,4 +1,4 @@
-/* ========== 全局 ========== */
+/* ========== 全局配置 ========== */
 *,
 *::before,
 *::after {
@@ -9,7 +9,8 @@ body {
   margin: 0;
   background: #ffffff;
   color: #111827;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  /* 优先使用 Inter 和 Source Serif 4，如果你引入了的话 */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
 }
 
@@ -23,9 +24,11 @@ a {
   text-decoration: none;
 }
 
-/* 用 max-width 而不是 min(...)，避免兼容问题 */
+/* 核心修改 1: 容器加宽 
+   从 1100px 改为 1400px，让大屏显示更开阔
+*/
 .container {
-  max-width: 2400px;
+  max-width: 1400px;
   width: 94%;
   margin: 0 auto;
 }
@@ -58,7 +61,7 @@ a {
 }
 
 .brand-logo {
-  height: 45px;
+  height: 45px;       
   width: auto;
   display: block;
   object-fit: contain;
@@ -73,9 +76,19 @@ a {
 .nav-links a {
   color: rgba(255, 255, 255, 0.85);
   font-size: 0.85rem;
+  transition: color 0.3s;
 }
 
-/* ========== Hero ========== */
+.nav-links a:hover {
+  color: #fff;
+}
+
+.btn-small {
+  /* Contact 按钮保持原样或按需加框 */
+}
+
+
+/* ========== Hero 区域 ========== */
 .hero {
   position: relative;
   height: 100vh;
@@ -84,6 +97,9 @@ a {
   background: #000;
 }
 
+/* 核心修改 2: Hero 背景图动画 
+   设置 infinite alternate 让它像呼吸一样缓慢放大缩小
+*/
 .hero-img {
   position: absolute;
   top: 0;
@@ -92,6 +108,7 @@ a {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  animation: zoomSlow 20s linear infinite alternate;
 }
 
 .hero-overlay {
@@ -100,11 +117,14 @@ a {
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.9));
+  /* 稍微深一点的遮罩，保证白色文字清晰 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7));
+  z-index: 1;
 }
 
 .hero-content {
   position: relative;
+  z-index: 2; /* 确保在遮罩之上 */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -112,21 +132,15 @@ a {
   gap: 1rem;
   color: #fff;
   max-width: 520px;
+  
+  /* 核心修改 3: 文字开场上浮动画 */
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.3s;
 }
 
-.hero-sub {
-  background: rgba(255, 255, 255, 0.25);
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  color: #000;
-  backdrop-filter: blur(6px);
-}
-
-/* 顶部小标签 */
 .hero-tag {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -134,25 +148,23 @@ a {
   color: #ffffff;
   margin-bottom: 0.5rem;
   display: inline-block;
-  border-left: 2px solid #fff;
+  border-left: 2px solid #fff; 
   padding-left: 12px;
 }
 
-/* 核心人名 */
 .hero-title {
-  font-family: "Source Serif 4", serif;
+  font-family: 'Source Serif 4', serif;
   font-style: italic;
   font-weight: 400;
   font-size: 4.5rem;
   color: #ffffff;
   line-height: 1.1;
   margin: 0;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* 描述 */
 .hero-desc {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.85);
@@ -160,9 +172,10 @@ a {
   max-width: 600px;
 }
 
-/* ========== 通用段落 ========== */
+
+/* ========== 通用标题 ========== */
 .section {
-  padding: 1rem 0 4rem 0;
+  padding: 1rem 0 4rem 0rem;
   background: #fff;
 }
 
@@ -174,10 +187,11 @@ a {
   font-size: 2.4rem;
   margin-bottom: 0rem;
   text-transform: uppercase;
+  font-family: 'Source Serif 4', serif; /* 标题统一用衬线更好看 */
 }
 
 .section-head p {
-  margin: 0 0rem;
+  margin: 0;
   color: #6b7280;
 }
 
@@ -185,16 +199,20 @@ a {
   text-align: center;
 }
 
-/* ========== Work (Category) ========== */
+
+/* ========== Category (Work) 网格配置 ========== */
+
 .work {
   background: #fff;
 }
 
-/* 网格布局：两列，自动拉伸 */
+/* 核心修改 4: 宽屏下的 Grid 布局 */
 .work-grid {
   display: grid;
   gap: 2rem;
+  /* 使用 1fr 让两列自动填满 1400px 的容器 */
   grid-template-columns: repeat(2, 1fr);
+  /* 小屏变成一列 */
 }
 
 /* 单个卡片样式 */
@@ -240,7 +258,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 0rem 0rem 3rem 4rem; /* 稍微大一点的边距 */
+  padding: 2rem; /* 稍微大一点的边距 */
   z-index: 10;   /* 确保在图片上层 */
   
   background: transparent; /* 去掉黑影 */
@@ -295,15 +313,16 @@ a {
   opacity: 1; /* 浮现 */
 }
 
-/* 小屏 Category 一列显示 */
+
+/* 小屏幕适配 */
 @media (max-width: 760px) {
   .work-grid {
-    grid-template-columns: minmax(280px, 1fr);
-    justify-content: center;
+    grid-template-columns: 1fr; /* 手机上一列 */
   }
 }
 
-/* ========== My Work / Trusted ========== */
+
+/* ========== My Work (Highlights) ========== */
 .trusted {
   background: #000;
   color: #fff;
@@ -315,25 +334,21 @@ a {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   justify-items: center;
-  align-items: center;
 }
 
 .trusted-item {
-  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   background: #111;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .trusted-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   transition: transform 0.4s ease;
 }
 
@@ -341,22 +356,14 @@ a {
   transform: scale(1.05);
 }
 
-.trusted-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08);
-}
-
+/* 响应式 */
 @media (max-width: 1024px) {
-  .trusted-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .trusted-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .trusted-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 640px) {
-  .trusted-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ========== About ========== */
 .about {
@@ -365,63 +372,81 @@ a {
 }
 
 .about .narrow {
-  max-width: 900px;
+  max-width: 1000px; /* 稍微加宽 */
   margin: 0 auto;
 }
 
-/* ========== Accreditations ========== */
+
+/* ========== Experience ========== */
 .acc {
-  background: #000;
+  background: transparent; /* 背景由父级 dark-gradient 控制 */
   color: #fff;
 }
 
+/* 核心修改 7: Experience 间距调整 */
 .acc-grid {
   display: grid;
-  gap: 1.2rem;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem; /* 增大间距 */
+  grid-template-columns: repeat(4, 1fr); /* 4列平分宽屏 */
 }
 
 @media (max-width: 900px) {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .acc-grid {
+    grid-template-columns: repeat(2, 1fr); /* 平板2列 */
+  }
+}
+@media (max-width: 600px) {
+  .acc-grid {
+    grid-template-columns: 1fr; /* 手机1列 */
+  }
 }
 
 .acc-card {
   background: rgba(15, 118, 178, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 1.4rem;
-  padding: 1.5rem 1.5rem 1.2rem;
+  padding: 2rem 1.5rem; /* 增加内边距 */
   text-align: center;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .acc-card img {
   width: 140px;
   height: 90px;
   object-fit: contain;
-  display: block;
   margin: 0 auto 1rem;
 }
 
 .acc-card h3 {
-  margin: 0 0 0 0rem;
+  margin: 0 0 0.5rem 0;
   font-size: 1.05rem;
 }
 
 .acc-card p {
-  margin: 0;
+  margin: 0 0 1rem 0;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 .acc-card h2 {
-  margin-top: 0.1rem;
+  margin-top: auto; /* 把职位顶到底部 */
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* ========== Contact ========== */
-.contact {
+
+/* ========== Contact & Footer ========== */
+.dark-gradient {
   background: linear-gradient(150deg, #000 0%, #0f172a 100%);
   color: #fff;
+  padding-bottom: 20px;
+}
+
+.contact {
+  background: transparent;
 }
 
 .contact-wrap {
@@ -432,6 +457,7 @@ a {
 }
 
 .contact-text h2 {
+  font-family: 'Source Serif 4', serif;
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
@@ -456,85 +482,69 @@ a {
   width: 100%;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
 }
 
-@media (max-width: 768px) {
-  .contact-wrap {
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-  }
-  .contact-logo {
-    justify-self: end;
-    margin-top: 0.25rem;
-  }
-  .contact-logo img {
-    max-width: 110px;
-  }
-}
-
-/* Footer in contact */
+/* Footer */
 .contact-footer {
   width: 100%;
   text-align: center;
-  padding: 0 0 0 0px;
-  background: transparent;
-  color: #fff;
-  box-sizing: border-box;
-}
-
-.section.contact {
-  padding-bottom: 12px;
+  margin-top: 3rem;
 }
 
 .contact-footer p {
-  margin-top: 0;
-  margin-bottom: 5px;
+  margin-top: 10px;
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255,255,255,.5);
 }
 
 .contact-footer .footer-icons a {
   color: #fff;
-  text-decoration: none;
   margin: 0 10px;
-  font-size: 15px;
-  transition: opacity 0.25s ease;
+  font-size: 18px;
+  transition: opacity .25s ease;
 }
-
 .contact-footer .footer-icons a:hover {
-  opacity: 0.8;
+  opacity: .7;
 }
 
-/* 父容器：只绘制一次渐变 */
-.dark-gradient {
-  background: linear-gradient(150deg, #000 0%, #0f172a 100%);
-  color: #fff;
-}
 
-.acc,
-.contact {
-  background: transparent;
-}
-
-/* ========== 响应式 ========== */
+/* 响应式补充 */
 @media (max-width: 900px) {
   .contact-wrap {
     grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .contact-logo {
+    justify-self: center; /* 手机端居中 */
   }
   .hero-title {
-    font-size: 2.6rem;
+    font-size: 3rem;
   }
 }
 
 @media (max-width: 720px) {
-  .nav-links {
-    display: none;
+  .nav-links { display: none; }
+  .hero { min-height: 520px; }
+  .section { padding: 2rem 0; }
+}
+
+
+/* ========== 动画关键帧定义 ========== */
+
+/* Hero 背景图缓慢放大 */
+@keyframes zoomSlow {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+/* Hero 文字上浮 */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  .hero {
-    min-height: 520px;
-  }
-  .section {
-    padding: 2rem 0;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
