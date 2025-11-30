@@ -97,15 +97,15 @@ main {
 
 /******************************************* Hero 区域 *******************************************/
 .hero_sports {
-  background-image:  url('../img/Sports/Athletics/a1.jpg');
+  background-image:  url('/img/Sports/Athletics/a1.jpg');
 }
 
 .hero_events {
-  background-image: url('../img/Events/2025 Liv Vegas/lv6.jpg');  
+  background-image: url('/img/Events/2025 Liv Vegas/lv6.jpg');  
 }
 
 .hero_stage {
-  background-image: url('../img/Stage/s1.jpg');                  
+  background-image: url('/img/Stage/s1.jpg');                  
 }
 
 
