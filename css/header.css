@@ -1,5 +1,5 @@
 .topbar {
-  position: fixed;      /* 不用 inset，老方式 */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -8,6 +8,12 @@
   backdrop-filter: blur(16px);
   border-bottom: 2px solid rgba(255, 255, 255, 0.08);
   z-index: 50;
+}
+
+.topbar .container{
+	max-width: 2400px;
+	width: 94%;
+	margin: 0 auto;
 }
 
 .nav-inner {
@@ -24,15 +30,12 @@
   height: 100%;
 }
 
-
-
 .brand-logo {
-  height: 45px;       
+  height: 45px;
   width: auto;
   display: block;
   object-fit: contain;
 }
-
 
 .nav-links {
   display: flex;
