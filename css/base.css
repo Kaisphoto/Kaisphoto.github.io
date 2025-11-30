@@ -108,6 +108,10 @@ main {
   background-image: url('/img/Stage/s1.jpg');                  
 }
 
+.hero_portrait{
+	background-image: url('/img/Portrait/kthfsteamphoto.jpg');
+}
+
 
 .hero-overlay {
   background-color: rgba(255, 255, 255, 0.1); /* 白色不透明 */
