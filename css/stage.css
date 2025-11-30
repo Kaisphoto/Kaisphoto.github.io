@@ -1,0 +1,117 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111827;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+/* 顶部横图 Banner 通用样式 */
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;      /* 横图比例，高度随宽度变 */
+  min-height: 320px;
+  max-height: 720px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* 不同页面各自的背景图 */
+.hero-events {
+  background-image: url('/img/Events/2025 Liv Vegas/lv6.jpg');  /* 自己换成想要的横图 */
+}
+
+.hero-stage {
+  background-image: url('/img/Stage/s1.jpg');                  /* Stage 页顶部横图 */
+}
+
+/* 黑色渐变+居中文本 */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.6));
+}
+
+.hero-overlay h1 {
+  position: relative;
+  color: #ffffff;
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 3rem;
+  letter-spacing: 0.18em;
+}
+
+/* ===== 下面是三列图片区域 ===== */
+
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 4vw 3rem;
+}
+
+/* 三列 */
+.image-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* 每一列竖排若干图片 */
+.image-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 图片样式 */
+.image-column img {
+  width: 100%;
+  display: block;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* 响应式：平板两列，手机一列 */
+@media (max-width: 960px) {
+  .image-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    aspect-ratio: 16 / 10;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2.3rem;
+  }
+
+  .main-content {
+    padding: 1.8rem 1.2rem 2.4rem;
+  }
+
+  .image-columns {
+    grid-template-columns: 1fr;
+  }
+}
