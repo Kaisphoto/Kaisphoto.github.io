@@ -240,7 +240,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 0rem 0rem 3rem 4rem; /* 稍微大一点的边距 */
+  padding: 0rem 0rem 2rem 3rem; /* 稍微大一点的边距 */
   z-index: 10;   /* 确保在图片上层 */
   
   background: transparent; /* 去掉黑影 */
@@ -427,9 +427,11 @@ a {
 .contact-wrap {
   display: grid;
   gap: 2.5rem;
-  grid-template-columns: 1.25fr 0.75fr;
-  align-items: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 左右两列等宽 */
+  align-items: center;        /* 垂直居中两列内容 */
+  justify-items: center;      /* 每一列里的内容水平居中 */
 }
+
 
 .contact-text h2 {
   font-size: 2rem;
