@@ -23,6 +23,20 @@ a {
   text-decoration: none;
 }
 
+img {
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
+	/* 禁用鼠标事件，使右键点击无法直接作用于图片 */
+	pointer-events: none;
+	
+	width: 100%;
+	display: block;
+
+	break-inside: avoid; 
+}
+
 /* 用 max-width 而不是 min(...)，避免兼容问题 */
 .container {
   max-width: 2400px;
@@ -153,10 +167,10 @@ a {
 /* 描述 */
 .hero-desc {
   font-family: "Inter", sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.85);
-  margin-top: 1.2rem;
+  margin-top: 0rem;
   max-width: 600px;
 }
 
@@ -370,53 +384,67 @@ a {
 }
 
 /* ========== Accreditations ========== */
+/* ========== Accreditations ========== */
 .acc {
   background: #000;
   color: #fff;
 }
 
+/* 一行四个 card */
 .acc-grid {
   display: grid;
-  gap: 1.2rem;
+  gap: 1.6rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+/* 窄屏时自动换成 2 / 1 列 */
 @media (max-width: 900px) {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .acc-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }
 
+/* 单个卡片 */
 .acc-card {
-  background: rgba(15, 118, 178, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.4rem;
-  padding: 1.5rem 1.5rem 1.2rem;
+  padding: 1.8rem 1.6rem 1.4rem;
   text-align: center;
 }
 
+/* ✅ 固定比例的 logo 区域 */
 .acc-card img {
-  width: 140px;
-  height: 90px;
-  object-fit: contain;
+  width: 100%;
+  max-width: 190px;          /* 控制 logo 最大宽度 */
+  aspect-ratio: 16 / 9;      /* 这里就是比例：16:9 */
+  object-fit: contain;       /* 不裁剪，只是缩放进这个比例框里 */
   display: block;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.2rem;
 }
 
+/* 标题（FISU World University...） */
 .acc-card h3 {
-  margin: 0 0 0 0rem;
-  font-size: 1.05rem;
+  margin: 0 0 0.2rem 0;
+  font-size: 1.25rem;        /* 字变大 */
 }
 
+/* 地点（Germany / Shanghai, China...） */
 .acc-card p {
   margin: 0;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.6rem;
+  font-size: 0.85rem;        /* 字变大 */
 }
 
+/* 身份（Media / Photographer...） */
 .acc-card h2 {
-  margin-top: 0.1rem;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.4rem;
+  font-size: 0.95rem;        /* 字变大 */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
 }
+
 
 /* ========== Contact ========== */
 .contact {
