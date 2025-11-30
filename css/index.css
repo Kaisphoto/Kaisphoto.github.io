@@ -300,102 +300,42 @@ a {
   justify-items: center;                          /* 可选：格子内也水平居中 */
 }
 
-/* 单个卡片样式 */
+/* 卡片宽度跟列等宽，不要再写死 width */
 .work-card {
-  width: 100%;
-  aspect-ratio: 16 / 9; /* 固定比例 */
-  border-radius: 0.5rem;
+  width: 100%;                                    /* 占满列宽 */
+  aspect-ratio: 16 / 9;                           /* 比例固定 */
+  border-radius: 1rem;
   overflow: hidden;
+  background: #0f172a;
   position: relative;
-  
-  /* 核心修改 5: 实现“不透明度”效果
-     这里我们将卡片背景设为全黑，
-     然后调整图片的透明度。
-  */
-  background: #000; 
-  cursor: pointer;
 }
 
-/* 图片样式与交互 */
+
+
+/* 图片填满卡片 */
 .work-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  
-  /* 默认状态：稍微透明 (0.6)，透出底下的黑色背景，达到“变暗”效果 */
-  opacity: 0.8; 
-  
-  /* 放大过渡 + 透明度过渡 */
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform .3s ease;
 }
 
-/* 鼠标悬停时：图片变回不透明 (变亮)，并稍微放大 */
-.work-card:hover img {
-  opacity: 1;
-  transform: scale(1.03);
-}
+.work-card:hover img { transform: scale(1.03); }
 
-/* 核心修改 6: 文字容器调整 
-   去掉背景渐变，改为透明
-*/
+/* 底部文字：用兼容性最好的写法 */
 .work-card figcaption {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  padding: 2rem; /* 稍微大一点的边距 */
-  z-index: 10;   /* 确保在图片上层 */
-  
-  background: transparent; /* 去掉黑影 */
-  pointer-events: none;    /* 让鼠标事件穿透文字打到图片上 */
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-
-/* 主标题：Sports, Events... */
-.card-title {
+  bottom: 0;                     /* ← 替代 inset */
+  padding: 1rem 1rem 0.9rem;
   color: #fff;
-  font-family: 'Source Serif 4', serif;
-  font-style: italic;
-  font-size: 2.2rem;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-  
-  /* 增加文字阴影，保证没有黑底也能看清 */
-  text-shadow: 0 2px 15px rgba(0,0,0,0.8);
-  
-  /* 动画：悬停时位移 */
-  transition: transform 0.4s ease;
-}
-
-/* 副标题：View Gallery */
-.card-sub {
-  color: rgba(255, 255, 255, 0.9);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  
-  /* 初始隐藏 */
-  opacity: 0;
-  transform: translateY(0);
-  
-  /* 增加文字阴影 */
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-  
-  transition: opacity 0.4s ease;
-}
-
-/* 悬停时的文字动画 */
-.work-card:hover .card-title {
-  transform: translateX(15px); /* 向右移动 15px */
-}
-
-.work-card:hover .card-sub {
-  opacity: 1; /* 浮现 */
+  letter-spacing: .15em;
+  z-index: 2;                    /* 保证在图片上方 */
+  background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+  pointer-events: none;          /* 可选：避免遮挡点击 */
 }
 
 /* 小屏降为一列 */
