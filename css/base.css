@@ -513,8 +513,19 @@ footer {
 }
 
 @media (max-width: 760px) {
+  .container,
+  .page-shell,
+  .hero-overlay,
+  .section,
+  .detail-intro,
+  .story-strip,
+  .main-content,
+  footer {
+    width: min(92vw, 420px);
+  }
+
   .hero {
-    min-height: 58vh;
+    min-height: 68vh;
   }
 
   .hero-overlay,
@@ -522,8 +533,40 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .hero-overlay {
+    padding: 124px 0 42px;
+    gap: 24px;
+  }
+
+  .hero h1,
+  .detail-intro h1 {
+    font-size: clamp(52px, 17vw, 78px);
+  }
+
+  .hero p,
+  .detail-intro p {
+    font-size: 15px;
+  }
+
   .hero-meta {
     justify-self: stretch;
+  }
+
+  .meta-item {
+    padding: 13px 12px;
+  }
+
+  .meta-v {
+    font-size: 16px;
+  }
+
+  .section {
+    padding: 46px 0 56px;
+  }
+
+  .detail-intro {
+    padding: 122px 0 28px;
+    gap: 24px;
   }
 
   .section-title,
@@ -546,6 +589,12 @@ footer {
   .image-columns,
   .row-gallery {
     column-count: 2;
+    column-gap: 3px;
+  }
+
+  .image-columns img,
+  .row-gallery img {
+    margin-bottom: 3px;
   }
 
   .story-strip figure:nth-child(2) {
@@ -563,6 +612,24 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .hero-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .meta-item {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .meta-item:last-child {
+    border-bottom: 0;
+  }
+
+  .category-grid,
+  .sport-index {
+    grid-template-columns: 1fr;
+  }
+
   .image-columns,
   .row-gallery {
     column-count: 1;

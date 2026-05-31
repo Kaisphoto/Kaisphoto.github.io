@@ -60,7 +60,7 @@
 
 @media (max-width: 760px) {
   .topbar {
-    height: 74px;
+    height: 82px;
   }
 
   .topbar .container {
@@ -75,7 +75,7 @@
   }
 
   .brand-logo {
-    height: 36px;
+    height: 34px;
   }
 
   .nav-links {
@@ -92,6 +92,6 @@
 
   .nav-links a {
     flex: 0 0 auto;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 }
