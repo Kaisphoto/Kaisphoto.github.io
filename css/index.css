@@ -319,8 +319,9 @@ p {
 }
 
 .card-kicker {
-  color: var(--accent);
+  color: rgba(247, 244, 238, 0.7);
   font-size: 11px;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -347,7 +348,8 @@ p {
 .selected-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
+  gap: 4px;
+  background: #000;
 }
 
 .selected-grid img {
@@ -629,7 +631,7 @@ p {
   }
 
   .selected-grid {
-    gap: 0;
+    gap: 4px;
   }
 
   .experience-card {

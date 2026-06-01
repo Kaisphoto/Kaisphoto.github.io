@@ -432,6 +432,21 @@ h3 {
   text-shadow: 0 2px 12px #000;
 }
 
+.story-strip-single {
+  grid-template-columns: minmax(240px, 420px);
+  min-height: 230px;
+}
+
+.story-strip-single figure {
+  min-height: 230px;
+}
+
+.story-strip-single img {
+  object-fit: contain;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
 .main-content {
   width: min(92vw, 1360px);
   margin: 0 auto;
